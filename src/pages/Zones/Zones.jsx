@@ -31,7 +31,7 @@ export default function Zones() {
         btn={false}
         icons={true}
       />
-      <div className="max-w-[1366px] mx-auto px-5 my-[87px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="max-w-[1366px] mx-auto px-5 my-[87px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -44,14 +44,8 @@ export default function Zones() {
               <img
                 src={zone.images?.[0]}
                 alt={zone.name_en}
-                className="rounded-[8px] w-full h-[250px] object-cover"
+                className="rounded-[8px] w-[327px] h-[221px] object-cover"
               />
-              <h2 className="font-semibold font-[playfair] text-2xl ml-2">
-                {zone.name_en}
-              </h2>
-              <p className="text-[#847D7D] ml-2">
-                {zone.description_en}
-              </p>
             </Link>
           ))
         )}

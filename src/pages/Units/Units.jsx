@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import uni from "../../assets/images/unit.png"
@@ -12,7 +13,6 @@ import rul from "./rul.svg"
 export default function Units() {
   const [units, setUnits] = useState([])
   const [loading, setLoading] = useState(true)
-
   const [search, setSearch] = useState("")
   const [price, setPrice] = useState("")
   const [bedrooms, setBedrooms] = useState("")
@@ -22,14 +22,14 @@ export default function Units() {
   const [status, setStatus] = useState("")
 
   const resetFilters = () => {
-  setSearch("")
-  setPrice("")
-  setBedrooms("")
-  setDeveloper("")
-  setZone("")
-  setProject("")
-  setStatus("")
-}
+    setSearch("")
+    setPrice("")
+    setBedrooms("")
+    setDeveloper("")
+    setZone("")
+    setProject("")
+    setStatus("")
+  }
 
   
   useEffect(() => {
@@ -90,169 +90,187 @@ export default function Units() {
         btn={false}
         icons={true}
       />
-{/* Search and Filters */}
-<div className="max-w-[1366px] mx-auto mt-[100px] px-4 font-semibold text-[#BEBEBE]">
-  <div className="w-full min-h-[58px] flex items-center border border-[#8E1616] rounded-[8px] bg-white overflow-x-auto">
-    {/* Search Input */}
-    <div className="min-w-[155px] flex-1 flex items-center px-3 border-r border-[#8E1616]">
-      <input
-        type="text"
-        placeholder="Search Property"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="w-full outline-none text-[18px]"
-      />
-      <div className="h-[30px] w-[30px] mt-[5px]">
-        <img src={searchh} alt="" />
-      </div>
-      <div className="mt-[60px]"></div>
-    </div>
-    {/* Bedrooms */}
-    <select
-      value={bedrooms}
-      onChange={(e) => setBedrooms(e.target.value)}
-      className="min-w-[85px] flex-1 p-3 outline-none bg-transparent text-[18px] border-r border-[#8E1616]"
-    >
-      <option value="">Bedrooms</option>
-      <option value="2">2 Bedrooms</option>
-      <option value="3">3 Bedrooms</option>
-      <option value="4">4 Bedrooms</option>
-      <option value="12">12 Bedrooms</option>
-    </select>
-    {/* Developer */}
-    <select
-      value={developer}
-      onChange={(e) => setDeveloper(e.target.value)}
-      className="min-w-[85px] flex-1 p-3 outline-none bg-transparent text-[18px] border-r border-[#8E1616]"
-    >
-      <option value="">Developer</option>
-      {developers.map((item) => (
-        <option key={item} value={item}>{item}</option>
-      ))}
-    </select>
-    {/* Zone */}
-    <select
-      value={zone}
-      onChange={(e) => setZone(e.target.value)}
-      className="min-w-[75px] flex-1 p-3 outline-none bg-transparent text-[18px] border-r border-[#8E1616]"
-    >
-      <option value="">Zone</option>
-      {zones.map((item) => (
-        <option key={item} value={item}>{item}</option>
-      ))}
-    </select>
-    {/* Projects */}
-    <select
-      value={project}
-      onChange={(e) => setProject(e.target.value)}
-      className="min-w-[85px] flex-1 p-3 outline-none bg-transparent text-[18px] border-r border-[#8E1616]"
-    >
-      <option value="">Projects</option>
-      {projects.map((item) => (
-        <option key={item} value={item}>{item}</option>
-      ))}
-    </select>
-    {/* Status */}
-    <select
-      value={status}
-      onChange={(e) => setStatus(e.target.value)}
-      className="min-w-[75px] flex-1 p-3 outline-none bg-transparent text-[18px] border-r border-[#8E1616]"
-    >
-      <option value="">Status</option>
-      {statuses.map((item) => (
-        <option key={item} value={item}>{item}</option>
-      ))}
-    </select>
-    {/* Price */}
-    <select
-      value={price}
-      onChange={(e) => setPrice(e.target.value)}
-      className="min-w-[100px] flex-1 p-3 outline-none bg-transparent text-[18px]"
-    >
-      <option value="">Price Range</option>
-      <option value="2000000">Up to 2M</option>
-      <option value="5000000">Up to 5M</option>
-      <option value="10000000">Up to 10M</option>
-      <option value="20000000">Up to 20M</option>
-    </select>
-  </div>
-  {/* Search and Reset Buttons */}
-  <div className="flex justify-center items-center gap-4 mt-[61px]">
-    <button
-      onClick={() => setSearch(search.trim())}
-      className="w-[350px] h-[57px] rounded-[6px] bg-gradient-to-r from-[#8E1616] to-[#C34B4B] text-white text-[20px] font-semibold"
-    >Search</button>
-    <button
-      onClick={resetFilters}
-      className="w-[200px] h-[57px] rounded-[6px] border border-[#8E1616] text-[#8E1616] text-[20px] font-semibold hover:bg-[#8E1616] hover:text-white transition"
-    >Reset</button>
-  </div>
-</div>
-{/* Units Cards */}
-<div className="max-w-[1366px] mx-auto px-4 mt-[116px] mb-[142px]">
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px]">
-    {filteredUnits.length > 0 ? (
-      filteredUnits.map((unit) => (
-        <div
-          key={unit.id}
-          className="w-[442px] min-h-[529px] flex flex-col border border-[#EAEAEA] rounded-[12px] shadow-[0px_3px_4px_rgba(0,0,0,0.2)] overflow-hidden"
-        >
-          {/* Image */}
-          <div className="relative w-full h-[284px] shrink-0">
-            <img
-              src={unit.images?.[0]}
-              alt={unit.title_en}
-              className="w-full h-full object-cover"
+
+      {/* Search and Filters */}
+      <div className="max-w-[1366px] mx-auto mt-12 sm:mt-[100px] px-4 font-semibold text-[#BEBEBE]">
+        <div className="w-full min-h-[58px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 border border-[#8E1616] rounded-[8px] bg-white overflow-hidden">
+          
+          {/* Search Input */}
+          <div className="min-w-0 flex items-center px-3 sm:border-r border-[#8E1616]">
+            <input
+              type="text"
+              placeholder="Search Property"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full min-w-0 outline-none text-base sm:text-[18px]"
             />
-            <span className="absolute top-[13px] right-[6px] px-3 py-1 rounded-[3px] bg-[#21E008] text-white text-[14px] font-semibold">
-              {unit.status}
-            </span>
-          </div>
-          {/* Unit Information */}
-          <div className="h-[42px] shrink-0 border-y border-[#CEC7C7] flex items-center justify-center">
-            <div className="flex items-center justify-center gap-[4px] text-[16px] text-[#A18E77]">
-              <div><img src={bed} alt="" /></div>
-              <span>{unit.bedrooms} Bedrooms</span>
-              <span className="border-l border-[#CEC7C7] h-[20px] mx-[22px]"></span>
-              <div><img src={bath} alt="" /></div>
-              <span>{unit.bathrooms} Bathrooms</span>
-              <span className="border-l border-[#CEC7C7] h-[20px] mx-[22px]"></span>
-              <div><img src={rul} alt="" /></div>
-              <span>{unit.size}m</span>
+            <div className="h-[30px] w-[30px] mt-[5px] shrink-0">
+              <img src={searchh} alt="" />
             </div>
+            <div className="mt-[60px]"></div>
           </div>
-          {/* Details */}
-          <div className="flex flex-col flex-1 px-[10px] py-[10px]">
-            <div className="flex justify-between items-center gap-2">
-              <h3 className="font-[playfair] font-semibold text-[22px] text-[#8E1616] truncate">
-                {unit.title_en}
-              </h3>
-              <p className="font-lato font-semibold text-[26px] text-[#A18E77] whitespace-nowrap">
-                {Number(unit.price).toLocaleString()} EGP
-              </p>
-            </div>
-            <p className="mt-[10px] text-[16px] text-[#847D7D] line-clamp-3">
-              Experience the true meaning of modern living in this luxurious apartment featuring spacious rooms, elegant finishes, and breathtaking views.
-            </p>
-            {/* View Details */}
-            <div className="mt-[24px] mb-[10px] mx-[14px] pt-[8px]">
-              <Link
-                to={`/units/${unit.id}`}
-                className="w-full h-[35px] flex items-center justify-center border border-[#8E1616] rounded-[6px] text-[#8E1616] text-[16px] hover:bg-[#8E1616] hover:text-white transition"
-              >
-                View Details
-              </Link>
-            </div>
-          </div>
+
+          {/* Bedrooms */}
+          <select
+            value={bedrooms}
+            onChange={(e) => setBedrooms(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px] border-b sm:border-r border-[#8E1616]"
+          >
+            <option value="">Bedrooms</option>
+            <option value="2">2 Bedrooms</option>
+            <option value="3">3 Bedrooms</option>
+            <option value="4">4 Bedrooms</option>
+            <option value="12">12 Bedrooms</option>
+          </select>
+
+          {/* Developer */}
+          <select
+            value={developer}
+            onChange={(e) => setDeveloper(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px] border-b sm:border-r border-[#8E1616]"
+          >
+            <option value="">Developer</option>
+            {developers.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+
+          {/* Zone */}
+          <select
+            value={zone}
+            onChange={(e) => setZone(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px] border-b sm:border-r border-[#8E1616]"
+          >
+            <option value="">Zone</option>
+            {zones.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+
+          {/* Projects */}
+          <select
+            value={project}
+            onChange={(e) => setProject(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px] border-b sm:border-r border-[#8E1616]"
+          >
+            <option value="">Projects</option>
+            {projects.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+
+          {/* Status */}
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px] border-b sm:border-r border-[#8E1616]"
+          >
+            <option value="">Status</option>
+            {statuses.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+
+          {/* Price */}
+          <select
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            className="min-w-0 w-full p-3 outline-none bg-transparent text-base sm:text-[18px]"
+          >
+            <option value="">Price Range</option>
+            <option value="2000000">Up to 2M</option>
+            <option value="5000000">Up to 5M</option>
+            <option value="10000000">Up to 10M</option>
+            <option value="20000000">Up to 20M</option>
+          </select>
         </div>
-      ))
-    ) : (
-      <p className="col-span-full text-center text-xl font-bold text-[#8E1616]">
-        No Units found
-      </p>
-    )}
-  </div>
-</div>
+
+        {/* Search and Reset Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 mt-8 sm:mt-[61px]">
+          <button
+            onClick={() => setSearch(search.trim())}
+            className="w-full sm:w-[350px] h-[50px] sm:h-[57px] rounded-[6px] bg-gradient-to-r from-[#8E1616] to-[#C34B4B] text-white text-lg sm:text-[20px] font-semibold"
+          >
+            Search
+          </button>
+          <button
+            onClick={resetFilters}
+            className="w-full sm:w-[200px] h-[50px] sm:h-[57px] rounded-[6px] border border-[#8E1616] text-[#8E1616] text-lg sm:text-[20px] font-semibold hover:bg-[#8E1616] hover:text-white transition"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+
+      {/* Units Cards */}
+      <div className="max-w-[1366px] mx-auto px-4 mt-16 sm:mt-[116px] mb-20 sm:mb-[142px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {filteredUnits.length > 0 ? (
+            filteredUnits.map((unit) => (
+              <div
+                key={unit.id}
+                className="w-full min-w-0 min-h-[529px] flex flex-col border border-[#EAEAEA] rounded-[12px] shadow-[0px_3px_4px_rgba(0,0,0,0.2)] overflow-hidden"
+              >
+                {/* Image */}
+                <div className="relative w-full h-[220px] sm:h-[284px] shrink-0">
+                  <img
+                    src={unit.images?.[0]}
+                    alt={unit.title_en}
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="absolute top-[13px] right-[6px] px-3 py-1 rounded-[3px] bg-[#21E008] text-white text-[14px] font-semibold">
+                    {unit.status}
+                  </span>
+                </div>
+
+                {/* Unit Information */}
+                <div className="min-h-[42px] shrink-0 border-y border-[#CEC7C7] flex items-center justify-center px-2 py-2">
+                  <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-sm sm:text-base text-[#A18E77]">
+                    <div><img src={bed} alt="" /></div>
+                    <span>{unit.bedrooms} Bedrooms</span>
+                    <span className="hidden sm:block border-l border-[#CEC7C7] h-[20px] mx-2"></span>
+                    <div><img src={bath} alt="" /></div>
+                    <span>{unit.bathrooms} Bathrooms</span>
+                    <span className="hidden sm:block border-l border-[#CEC7C7] h-[20px] mx-2"></span>
+                    <div><img src={rul} alt="" /></div>
+                    <span>{unit.size}m</span>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="flex flex-col flex-1 px-3 py-3">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                    <h3 className="font-[playfair] font-semibold text-lg sm:text-[22px] text-[#8E1616] truncate">
+                      {unit.title_en}
+                    </h3>
+                    <p className="font-lato font-semibold text-xl sm:text-[26px] text-[#A18E77] whitespace-nowrap">
+                      {Number(unit.price).toLocaleString()} EGP
+                    </p>
+                  </div>
+
+                  <p className="mt-2 sm:mt-[10px] text-sm sm:text-[16px] text-[#847D7D] line-clamp-3">
+                    Experience the true meaning of modern living in this luxurious apartment featuring spacious rooms, elegant finishes, and breathtaking views.
+                  </p>
+
+                  {/* View Details */}
+                  <div className="mt-6 mb-[10px] mx-2 sm:mx-[14px] pt-[8px]">
+                    <Link
+                      to={`/units/${unit.id}`}
+                      className="w-full h-[35px] flex items-center justify-center border border-[#8E1616] rounded-[6px] text-[#8E1616] text-[16px] hover:bg-[#8E1616] hover:text-white transition"
+                    >
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="col-span-full text-center text-xl font-bold text-[#8E1616]">
+              No Units found
+            </p>
+          )}
+        </div>
+      </div>
     </>
   )
 }

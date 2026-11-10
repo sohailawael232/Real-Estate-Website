@@ -4,13 +4,11 @@ import { useParams } from "react-router-dom"
 import api from "../../utils/axios-instance"
 
 export default function ProjectDetails() {
-
   const { id } = useParams()
   const [project, setProject] = useState(null)
   const [zone, setZone] = useState(null)
   const [selectedImage, setSelectedImage] = useState("")
   const [loading, setLoading] = useState(true)
-
   useEffect(() => {
     const getProjectDetails = async () => {
       try {

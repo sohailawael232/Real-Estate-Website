@@ -9,6 +9,7 @@ import Home from "./pages/Home/home"
 import Zones from "./pages/Zones/Zones"
 import ZoneProjects from "./pages/Zones/ZoneProjects"
 import ProjectDetails from "./pages/Zones/ZoneProjectsDetails"
+import DeveloperProjectDetails from "./pages/Developers/DeveloperProjectDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/projects/:id" element={<ProjectDetails />}/>
           <Route path='/Developers' element={<Developers />}/>
           <Route path="/developers/:id/projects"element={<DeveloperProjects />}/>
+          <Route path="/developers/:id/projects/:projectId" element={<DeveloperProjectDetails />}/>
           <Route path='/ContactUs' element={<ContactUs />}/>
         </Route>
       </Routes>
